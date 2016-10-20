@@ -1,0 +1,39 @@
+#!/bin/bash
+
+current_branch=$(git branch | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+upstream=$(git config --get branch.$current_branch.merge | xargs basename)
+remote=$(git config --get branch.$current_branch.remote)
+
+
+if test $# -eq 1
+then
+	remote_branch=$1
+elif test $# -lt 1
+then
+	remote_branch=$upstream
+else
+	echo "Usage : upload branch_remote"
+	exit 1
+fi
+
+function exitIfError()
+{
+	if test $? -ne 0
+	then
+		echo "command error, exit"
+		exit 1
+	fi
+
+}
+echo git fetch $remote
+git fetch -p $remote
+exitIfError
+
+echo git rebase $remote/$remote_branch
+git rebase $remote/$remote_branch
+exitIfError
+
+echo git push $remote $current_branch:$remote_branch
+git push $remote $current_branch:$remote_branch
+exitIfError
+
