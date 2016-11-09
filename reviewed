@@ -1,0 +1,34 @@
+#!/bin/bash
+
+#关键步骤失败时退出脚本，避免最后的apk未包含最新提交的代码
+function exitIf()
+{
+	if [ $? -ne 0 ];then
+		echo "ERROR_LOG: " $*
+		exit 1
+	fi
+}
+
+if test $# -ne 2; then
+	echo Usage: $0 branch_to_review target_branch
+fi
+
+source=$1;
+BR_TO_REVIEW=BR_TO_REVIEW;
+target=$2;
+repo=`git remote -v | head -n1 | awk '{print $1}'`
+
+git fetch -p; exitIf fail to fetch $repo;
+git branch -D $BR_TO_REVIEW;
+git rev-parse --verify $repo/$source;exitIf fail to find source branch $source;
+git checkout -b $BR_TO_REVIEW $repo/$source; exitIf fail to checkout branch $source;
+
+git reset --hard $repo/$source;
+git rebase $repo/$target; exitIf fail to rebase branch $source onto $target;
+git checkout -b $target $repo/$target;
+if [ 0 -ne $? ];then
+	git checkout $target; exitIf fail to checkout branch $target;
+fi
+git reset --hard $repo/$target;
+git merge $BR_TO_REVIEW;
+git br -D $BR_TO_REVIEW;

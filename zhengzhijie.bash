@@ -107,7 +107,7 @@ alias la='ls -al'
 alias b='cd -'
 alias ll='ls -l'
 
-export PATH=~/android-studio/sdk/tools:~/android-studio/sdk/platform-tools:~/android-studio/ndk:$PATH
+export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/ndk-bundle:$PATH
 export PATH=~/bin:$PATH
 
 # rails project production env need this
