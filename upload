@@ -25,7 +25,7 @@ function exitIfError()
 	fi
 
 }
-echo git fetch $remote
+echo git fetch -p $remote
 git fetch -p $remote
 exitIfError
 

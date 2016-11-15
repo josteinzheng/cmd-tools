@@ -17,8 +17,8 @@ function icd()
 	cd $IHOME
 }
 
-function switch () 
-{ 
+function switch ()
+{
     local PROJECT_PATH cur_path cur_prj_path target_prj_path target_path;
     PROJECT_PATH=/home_backup/home/zhijzheng;
     cur_path=$(pwd);
@@ -68,7 +68,7 @@ function up()
 	    else
 	        echo "Argument must be a number."
 	        echo -e $Usage
-	    fi  
+	    fi
 	else
 		    echo -e $Usage
 	fi
@@ -78,7 +78,7 @@ function igrep()
 {
 	target=""
 
-	if [ "$#" -gt 1 ];then 
+	if [ "$#" -gt 1 ];then
 	    target=.$1
 	    shift
 	fi
@@ -86,14 +86,36 @@ function igrep()
 	find -L . -name .repo -prune -o -name build -prune -o -name .git -prune -o -name .svn -prune -o -type f -name "*$target" -print0 | xargs -0 grep --color -n $@
 }
 
+function jsgrep ()
+{
+		find . -name .repo -prune -o -name .git -prune -o -type f -name "*\.js" -print0 | xargs -0 grep --color -n "$@"
+}
+
+function finddotgitdir ()
+{
+    TARGET_DIR=.git;
+    local HERE=$PWD;
+    T=;
+    while [ $PWD != "/" ]; do
+        T=`PWD= /bin/pwd`;
+        if [ -d "$T/$TARGET_DIR" ]; then
+            echo $T;
+            \cd $HERE;
+            return;
+        fi;
+        \cd ..;
+    done;
+    \cd $HERE
+}
+
 function iroot()
 {
-    if [ "$(findmakefile)" ]; then 
-        DEST=$(echo $(findmakefile) | sed '{s/\/[^\/]*$//}')
+    if [ "$(finddotgitdir)" ]; then
+        DEST=$(echo $(finddotgitdir))
         cd $DEST
-    else 
-        echo "couldn't find a Android.mk file in this module"
-    fi   
+    else
+        echo "couldn't find a .git in this repo"
+    fi
 }
 
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
