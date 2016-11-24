@@ -12,12 +12,20 @@ function ifind()
 }
 
 IHOME=~/workspace/android/we_android/finance
+WORKSPACE=~/workspace
+
 function icd()
 {
-	cd $IHOME
+	local target_prj_path;
+    if [ ! "$1" ]; then
+		cd $IHOME
+        return;
+    fi;
+    target_prj_path=$WORKSPACE/$1;
+    cd $target_prj_path
 }
 
-function switch ()
+function switch()
 {
     local PROJECT_PATH cur_path cur_prj_path target_prj_path target_path;
     PROJECT_PATH=/home_backup/home/zhijzheng;
