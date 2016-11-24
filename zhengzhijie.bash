@@ -131,6 +131,7 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
 fi
 
 source ~/.adb-completion
+source ~/.npm-completion
 
 alias l='ls'
 alias la='ls -al'
