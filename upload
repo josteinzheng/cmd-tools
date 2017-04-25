@@ -37,3 +37,4 @@ echo git push $remote $current_branch:$remote_branch
 git push $remote $current_branch:$remote_branch
 exitIfError
 
+git submodule update
