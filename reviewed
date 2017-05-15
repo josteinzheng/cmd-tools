@@ -21,7 +21,7 @@ repo=`git remote -v | head -n1 | awk '{print $1}'`
 git fetch -p; exitIf fail to fetch $repo;
 git branch -D $BR_TO_REVIEW;
 git rev-parse --verify $repo/$source;exitIf fail to find source branch $source;
-git checkout -b $BR_TO_REVIEW $repo/$source; exitIf fail to checkout branch $source;
+git checkout -b $BR_TO_REVIEW $repo/$source;
 
 git reset --hard $repo/$source;
 git rebase $repo/$target; exitIf fail to rebase branch $source onto $target;
