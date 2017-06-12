@@ -138,9 +138,6 @@ alias ll='ls -l'
 export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/ndk-bundle:$PATH
 export PATH=~/bin:$PATH
 
-# rails project production env need this
-export SECRET_KEY_BASE="4967c5afbda01e65598d0951bedc1ba8e89542a6dc6a2dee956156b2694907a44c7a7ae4c7d57dc1f74d751fa86946325902dd3acf33c90da5c162bced1e8e77"
-
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/jostein/.sdkman"
 [[ -s "/Users/jostein/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/jostein/.sdkman/bin/sdkman-init.sh"
@@ -149,3 +146,5 @@ export SDKMAN_DIR="/Users/jostein/.sdkman"
 
 export NVM_DIR="$HOME/.nvm"
 . "$(brew --prefix nvm)/nvm.sh"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
