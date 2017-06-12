@@ -125,10 +125,10 @@ function iroot()
         echo "couldn't find a .git in this repo"
     fi
 }
-
-source ~/.adb-completion
-source ~/.npm-completion
-source ~/.git-completion
+TOOLSDIR=~/workspace/tools/unix_env
+source $TOOLSDIR/adb-completion.bash
+source $TOOLSDIR/npm-completion.bash
+source $TOOLSDIR/git-completion.bash
 
 alias l='ls'
 alias la='ls -al'
