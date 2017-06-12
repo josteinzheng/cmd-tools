@@ -128,6 +128,7 @@ function iroot()
 
 source ~/.adb-completion
 source ~/.npm-completion
+source ~/.git-completion
 
 alias l='ls'
 alias la='ls -al'
