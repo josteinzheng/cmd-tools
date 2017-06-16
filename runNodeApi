@@ -1,0 +1,15 @@
+#!/bin/bash
+
+kill -2 $(pgrep grape)
+
+npm run env:init
+
+DIRS="demo account common home rrd premiumplan user"
+for dir in $DIRS; do
+	cd src/$dir
+	nohup grape release -cw&
+	cd ../..
+done
+
+npm run server:localhost
+
