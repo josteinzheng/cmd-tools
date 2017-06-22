@@ -8,6 +8,7 @@ DIRS="demo account common home rrd premiumplan user"
 for dir in $DIRS; do
 	cd src/$dir
 	nohup grape release -cw&
+	sleep 0.5
 	cd ../..
 done
 
