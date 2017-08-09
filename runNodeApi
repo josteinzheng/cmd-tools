@@ -4,10 +4,11 @@ kill -2 $(pgrep grape)
 
 npm run env:init
 
-DIRS="demo account common home rrd premiumplan user"
+DIRS="common demo account home rrd premiumplan user uplan monthrise"
 for dir in $DIRS; do
 	cd src/$dir
-	nohup grape release -cw&
+	echo $(pwd)
+	grape release -cw &
 	sleep 0.5
 	cd ../..
 done
