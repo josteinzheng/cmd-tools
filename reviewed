@@ -9,13 +9,18 @@ function exitIf()
 	fi
 }
 
-if test $# -ne 2; then
-	echo Usage: $0 branch_to_review target_branch
+if test $# -lt 1; then
+	echo Usage: $0 branch_to_review [target_branch]
+	echo If target_branch is not provided, it will use the current branch as the default
 fi
 
 source=$1;
 BR_TO_REVIEW=BR_TO_REVIEW;
-target=$2;
+if test $# -lt 2; then
+	target=$(git branch | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+else
+	target=$2;
+fi
 repo=`git remote -v | head -n1 | awk '{print $1}'`
 
 git fetch -p; exitIf fail to fetch $repo;
@@ -25,11 +30,5 @@ git checkout -b $BR_TO_REVIEW $repo/$source;
 
 git reset --hard $repo/$source;
 git rebase $repo/$target; exitIf fail to rebase branch $source onto $target;
-git checkout -b $target $repo/$target;
-if [ 0 -ne $? ];then
-	git checkout $target; exitIf fail to checkout branch $target;
-fi
-git reset --hard $repo/$target;
-git merge $BR_TO_REVIEW;exitIf fail to merge branch $source
-git br -D $BR_TO_REVIEW;
+git push $repo $BR_TO_REVIEW:$target
 git push $repo :$source;
