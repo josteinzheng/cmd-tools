@@ -32,3 +32,4 @@ git reset --hard $repo/$source;
 git rebase $repo/$target; exitIf fail to rebase branch $source onto $target;
 git push $repo $BR_TO_REVIEW:$target
 git push $repo :$source;
+git checkout $target
