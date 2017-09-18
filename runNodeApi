@@ -4,7 +4,7 @@ kill -2 $(pgrep grape)
 
 npm run env:init
 
-DIRS="common demo account home rrd premiumplan user uplan monthrise"
+DIRS="common demo account rrd premiumplan user uplan monthrise score"
 for dir in $DIRS; do
 	cd src/$dir
 	echo $(pwd)
