@@ -1,8 +1,19 @@
 #!/bin/bash
 
-current_branch=$(git branch | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+function exitIfError()
+{
+	if test $? -ne 0; then
+		exit 1
+	fi
+
+}
+current_branch=$(git symbolic-ref HEAD | sed 's!refs\/heads\/!!')
 upstream=$(git rev-parse --abbrev-ref --symbolic-full-name @{u})
 remote=$(git config --get branch.$current_branch.remote)
+
+if test -z $remote; then
+	remote="origin"
+fi
 
 
 if test -z $upstream; then
@@ -11,15 +22,6 @@ if test -z $upstream; then
 	git branch --set-upstream-to=$upstream;exitIfError
 fi
 
-function exitIfError()
-{
-	if test $? -ne 0
-	then
-		echo "command error, exit"
-		exit 1
-	fi
-
-}
 echo git fetch -p $remote
 git fetch -p $remote
 exitIfError
