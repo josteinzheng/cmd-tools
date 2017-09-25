@@ -1,19 +1,14 @@
 #!/bin/bash
 
 current_branch=$(git branch | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
-upstream=$(git config --get branch.$current_branch.merge | xargs basename)
+upstream=$(git rev-parse --abbrev-ref --symbolic-full-name @{u})
 remote=$(git config --get branch.$current_branch.remote)
 
 
-if test $# -eq 1
-then
-	remote_branch=$1
-elif test $# -lt 1
-then
-	remote_branch=$upstream
-else
-	echo "Usage : upload branch_remote"
-	exit 1
+if test -z $upstream; then
+	echo "Didn't found any upstream, using current branch name '$current_branch' as default upstream."
+	upstream=$remote/$current_branch
+	git branch --set-upstream-to=$upstream;exitIfError
 fi
 
 function exitIfError()
@@ -29,12 +24,12 @@ echo git fetch -p $remote
 git fetch -p $remote
 exitIfError
 
-echo git rebase $remote/$remote_branch
-git rebase $remote/$remote_branch
+echo git rebase $upstream
+git rebase $upstream
 exitIfError
 
-echo git push $remote $current_branch:$remote_branch
-git push $remote $current_branch:$remote_branch
+echo git push $remote
+git push $remote
 exitIfError
 
 git submodule update
