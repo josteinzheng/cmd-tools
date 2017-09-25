@@ -1,1 +1,8 @@
-adb install -r app/build/outputs/apk/*release*.apk 
+#!/bin/bash
+
+if test $# > 0; then
+	apkKind=$1;
+	adb install -r app/build/outputs/apk/*$apkKind*.apk
+else
+	adb install -r app/build/outputs/apk/*.apk
+fi
