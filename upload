@@ -22,8 +22,8 @@ if test -z $upstream; then
 	git branch --set-upstream-to=$upstream;exitIfError
 fi
 
-echo git fetch -p $remote
-git fetch -p $remote
+echo git fetch -p
+git fetch -p
 exitIfError
 
 echo git rebase $upstream
