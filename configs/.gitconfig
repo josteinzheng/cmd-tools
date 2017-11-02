@@ -17,7 +17,7 @@
 	di = diff
 	ci = commit
 	br = branch
-	co = checkout
+	co = "!f(){ git checkout \"$@\" && git submodule update --init --recursive; }; f"
 	sdi = diff --staged
 	delete = branch -d
 	rdelete = branch -rd
