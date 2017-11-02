@@ -129,6 +129,8 @@ TOOLSDIR=~/workspace/tools/unix_env
 source $TOOLSDIR/adb-completion.bash
 source $TOOLSDIR/npm-completion.bash
 source $TOOLSDIR/git-completion.bash
+ln -fs $TOOLSDIR/configs/.gitconfig ~/.gitconfig
+ln -fs $TOOLSDIR/configs/.vimrc ~/.vimrc
 
 alias l='ls'
 alias la='ls -al'

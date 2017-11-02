@@ -1,0 +1,31 @@
+[user]
+	name = zhengzhijie
+	email = zhengzhijie@we.com
+[color]
+	ui = auto
+[core]
+	editor = vim
+	whitespace = cr-at-eol
+[merge]
+	tool = vimdiff
+[alias]
+	unstage = reset HEAD --
+	discard = checkout --
+	last = log -2
+	st = status
+	ll = log --oneline -10
+	di = diff
+	ci = commit
+	br = branch
+	co = checkout
+	sdi = diff --staged
+	delete = branch -d
+	rdelete = branch -rd
+[review "URL"]
+	autoupload = true
+[push]
+	default = simple
+[credential]
+	helper = cache --timeout=36000
+[url "git@gitlab.we.com:we-tech-fe/"]
+	insteadOf = http://gitlab.we.com/we-tech-fe/
