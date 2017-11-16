@@ -91,7 +91,7 @@ function igrep()
 	    shift
 	fi
 
-	find -L . -name .repo -prune -o -name build -prune -o -name .git -prune -o -name .svn -prune -o -type f -name "*$target" -print0 | xargs -0 grep --color -n $@
+	find -L . -name .idea -prune -o -name .repo -prune -o -name build -prune -o -name .git -prune -o -name .svn -prune -o -type f -name "*$target" -print0 | xargs -0 grep --color -n $@
 }
 
 function jsgrep ()
