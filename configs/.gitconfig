@@ -20,7 +20,7 @@
 	co = "!f(){ git checkout \"$@\" && git submodule update --init --recursive; }; f"
 	sdi = diff --staged
 	delete = branch -d
-	rdelete = branch -rd
+	rdelete = "!f(){ git push origin :\"$@\"; }; f"
 [review "URL"]
 	autoupload = true
 [push]
