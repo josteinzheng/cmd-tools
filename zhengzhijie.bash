@@ -2,7 +2,7 @@
 
 
 ANDROID_PROJECT=~/source/android-4.4
-export ANDROID_STUDIO=~/android-studio
+export ANDROID_STUDIO=~/android-dev-tools
 export ANDROID_HOME=$ANDROID_STUDIO/sdk
 source $ANDROID_PROJECT/build/envsetup.sh
 
@@ -139,6 +139,7 @@ alias ll='ls -l'
 
 export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/ndk-bundle:$PATH
 export PATH=~/bin:$PATH
+export PATH=$ANDROID_STUDIO/android-studio/jre/bin:$PATH
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/jostein/.sdkman"
