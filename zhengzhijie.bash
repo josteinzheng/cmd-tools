@@ -1,18 +1,15 @@
 #!/bin/bash
 
-
-ANDROID_PROJECT=~/source/android-4.4
 export ANDROID_STUDIO=~/android-dev-tools
 export ANDROID_HOME=$ANDROID_STUDIO/sdk
-source $ANDROID_PROJECT/build/envsetup.sh
 
 function ifind()
 {
 	find . -name .repo -prune -o -name .git -prune -o -name .svn -prune -o -name "*" -type f | grep -i --color -E "$@"
 }
 
-IHOME=~/workspace/android/rrd-finance/finance
 WORKSPACE=~/workspace
+IHOME=~/workspace/android/rrd-finance/finance
 
 function icd()
 {
@@ -23,25 +20,6 @@ function icd()
     fi;
     target_prj_path=$WORKSPACE/$1;
     cd $target_prj_path
-}
-
-function switch()
-{
-    local PROJECT_PATH cur_path cur_prj_path target_prj_path target_path;
-    PROJECT_PATH=/home_backup/home/zhijzheng;
-    cur_path=$(pwd);
-    cur_prj_path=$(gettop);
-    if [ ! "$cur_prj_path" ]; then
-        echo "Couldn't locate the top of the tree.  Try setting TOP." 1>&2;
-        return;
-    fi;
-    if [ ! "$1" ]; then
-        echo "give me a project name, please!" 1>&2;
-        return;
-    fi;
-    target_prj_path=$PROJECT_PATH/$1;
-    target_path=`echo $cur_path | sed "s:$cur_prj_path:$target_prj_path:"`;
-    cd $target_path
 }
 
 function where()
@@ -94,12 +72,27 @@ function igrep()
 	find -L . -name .idea -prune -o -name .repo -prune -o -name build -prune -o -name .git -prune -o -name .svn -prune -o -type f -name "*$target" -print0 | xargs -0 grep --color -n $@
 }
 
-function jsgrep ()
+function jsgrep()
 {
 		find . -name .repo -prune -o -name .git -prune -o -type f -name "*\.js" -print0 | xargs -0 grep --color -n "$@"
 }
 
-function finddotgitdir ()
+function jgrep()
+{
+		find . -name .repo -prune -o -name .git -prune -o -type f -name "*\.java" -print0 | xargs -0 grep --color -n "$@"
+}
+
+function cgrep()
+{
+	find . -name .repo -prune -o -name .git -prune -o -type f \( -name '*.c' -o -name '*.cc' -o -name '*.cpp' -o -name '*.h' \) -print0 | xargs -0 grep --color -n "$@" 
+}
+
+function resgrep()
+{
+	for dir in `find . -name .repo -prune -o -name .git -prune -o -name res -type d`; do find $dir -type f -name '*\.xml' -print0 | xargs -0 grep --color -n "$@"; done;
+}
+
+function finddotgitdir()
 {
     TARGET_DIR=.git;
     local HERE=$PWD;
