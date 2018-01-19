@@ -2,7 +2,7 @@
 
 if test $# -gt 0; then
 	apkKind=$1;
-	adb install -r app/build/outputs/apk/*$apkKind*.apk
+	adb install -r app/build/outputs/apk/*/*/*$apkKind*.apk
 else
-	adb install -r app/build/outputs/apk/*.apk
+	adb install -r app/build/outputs/apk/*/*/*.apk
 fi

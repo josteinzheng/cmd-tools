@@ -69,17 +69,17 @@ function igrep()
 	    shift
 	fi
 
-	find -L . -name .idea -prune -o -name .repo -prune -o -name build -prune -o -name .git -prune -o -name .svn -prune -o -type f -name "*$target" -print0 | xargs -0 grep --color -n $@
+	find -L . -name .idea -prune -o -name .repo -prune -o -name dist -prune -o -name build -prune -o -name .git -prune -o -name .svn -prune -o -type f -name "*$target" -print0 | xargs -0 grep --color -n $@
 }
 
 function jsgrep()
 {
-		find . -name .repo -prune -o -name .git -prune -o -type f -name "*\.js" -print0 | xargs -0 grep --color -n "$@"
+		find . -name .repo -prune -o -name .git -prune -o -name dist -prune -o -name build -prune -type f -name "*\.js" -print0 | xargs -0 grep --color -n "$@"
 }
 
 function jgrep()
 {
-		find . -name .repo -prune -o -name .git -prune -o -type f -name "*\.java" -print0 | xargs -0 grep --color -n "$@"
+		find . -name .repo -prune -o -name .git -prune -o -name dist -prune -o -name build -prune -o -type f -name "*\.java" -print0 | xargs -0 grep --color -n "$@"
 }
 
 function cgrep()
@@ -124,6 +124,7 @@ source $TOOLSDIR/npm-completion.bash
 source $TOOLSDIR/git-completion.bash
 ln -fs $TOOLSDIR/configs/.gitconfig ~/.gitconfig
 ln -fs $TOOLSDIR/configs/.vimrc ~/.vimrc
+export PATH=$TOOLSDIR/bin:$PATH
 
 alias l='ls'
 alias la='ls -al'
@@ -131,7 +132,6 @@ alias b='cd -'
 alias ll='ls -l'
 
 export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/ndk-bundle:$PATH
-export PATH=~/bin:$PATH
 export PATH=$ANDROID_STUDIO/android-studio/jre/bin:$PATH
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
