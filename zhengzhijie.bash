@@ -74,7 +74,7 @@ function igrep()
 
 function jsgrep()
 {
-		find . -name .repo -prune -o -name .git -prune -o -name dist -prune -o -name build -prune -type f -name "*\.js" -print0 | xargs -0 grep --color -n "$@"
+		find . -name .repo -prune -o -name .git -prune -o -name dist -prune -o -name build -prune -o -type f -name "*\.js" -print0 | xargs -0 grep --color -n "$@"
 }
 
 function jgrep()
