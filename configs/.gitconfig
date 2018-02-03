@@ -19,7 +19,8 @@
 	br = branch
 	co = "!f(){ git checkout \"$@\" && git submodule update --init --recursive; }; f"
 	sdi = diff --staged
-	delete = "!f(){ git branch -D \"$@\" && git push --delete origin \"$@\"; }; f"
+	del = "!f(){ git branch -D \"$@\" && git push --delete origin \"$@\"; }; f"
+	rdel = "!f(){ git push --delete origin \"$@\"; }; f"
 [review "URL"]
 	autoupload = true
 [push]
