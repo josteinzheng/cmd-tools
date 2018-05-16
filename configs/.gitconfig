@@ -11,6 +11,7 @@
 [alias]
 	unstage = reset HEAD --
 	discard = checkout --
+	drop = "!f(){ git unstage \"$@\" && git discard \"$@\"; }; f"
 	last = log -2
 	st = status
 	ll = log --oneline -10

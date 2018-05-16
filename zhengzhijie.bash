@@ -9,7 +9,7 @@ function ifind()
 }
 
 WORKSPACE=~/workspace
-IHOME=~/workspace/android/rrd-finance/finance
+IHOME=~/workspace/backend/we-renrendai
 
 function icd()
 {
