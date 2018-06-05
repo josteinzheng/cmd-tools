@@ -69,7 +69,7 @@ function igrep()
 	    shift
 	fi
 
-	find -L . -name .idea -prune -o -name .repo -prune -o -name dist -prune -o -name build -prune -o -name .git -prune -o -name .svn -prune -o -type f -name "*$target" -print0 | xargs -0 grep --color -n $@
+	find -L . -name target -prune -o -name .idea -prune -o -name .repo -prune -o -name dist -prune -o -name build -prune -o -name .git -prune -o -name .svn -prune -o -type f -name "*$target" -print0 | xargs -0 grep --color -n $@
 }
 
 function jsgrep()
@@ -90,6 +90,11 @@ function cgrep()
 function resgrep()
 {
 	for dir in `find . -name .repo -prune -o -name .git -prune -o -name res -type d`; do find $dir -type f -name '*\.xml' -print0 | xargs -0 grep --color -n "$@"; done;
+}
+
+function xmlgrep()
+{
+	find . -name target -prune -o -name .idea -prune -o -name .repo -prune -o -name .git -prune -o -name dist -prune -o -name build -prune -o -name target -prune -o -type f -name "*\.xml" -print0 | xargs -0 grep --color -n "$@"
 }
 
 function finddotgitdir()
