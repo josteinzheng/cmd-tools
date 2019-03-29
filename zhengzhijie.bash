@@ -135,8 +135,9 @@ alias l='ls'
 alias la='ls -al'
 alias b='cd -'
 alias ll='ls -l'
+alias gollum='gollum --live-preview --adapter rugged'
 
-export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/ndk-bundle:$PATH
+export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_STUDIO/ndk:$PATH
 #export PATH=$ANDROID_STUDIO/android-studio/jre/bin:$PATH
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
