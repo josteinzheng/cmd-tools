@@ -9,7 +9,7 @@ function ifind()
 }
 
 WORKSPACE=~/workspace
-IHOME=~/workspace/backend/we-renrendai
+IHOME=~/workspace/backend/pay-center
 
 function icd()
 {
@@ -138,7 +138,6 @@ alias ll='ls -l'
 alias gollum='gollum --live-preview --adapter rugged'
 
 export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_STUDIO/ndk:$PATH
-#export PATH=$ANDROID_STUDIO/android-studio/jre/bin:$PATH
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/jostein/.sdkman"
