@@ -1,0 +1,4 @@
+#!/bin/bash
+
+apath=$(cd "$(dirname $0)";pwd)
+echo "env DISPLAY=:0 eog -f $apath/green.jpg" | at now+45 minutes 
