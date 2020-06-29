@@ -1,4 +1,10 @@
 #!/bin/bash
 
-apath=$(cd "$(dirname $0)";pwd)
-echo "env DISPLAY=:0 eog -f $apath/green.jpg" | at now+45 minutes 
+if test -z $1
+then
+	minutes=45
+else
+	minutes=$1
+fi
+dir=$(cd "$(dirname $0)";pwd)
+echo "env DISPLAY=:0 eog -f $dir/dark.png" | at now+$minutes minutes 

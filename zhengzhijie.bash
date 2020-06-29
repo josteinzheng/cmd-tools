@@ -74,7 +74,7 @@ function igrep()
 
 function jsgrep()
 {
-		find . -name .repo -prune -o -name .git -prune -o -name dist -prune -o -name build -prune -o -type f -name "*\.js" -print0 | xargs -0 grep --color -n "$@"
+		find . -name .repo -prune -o -name .git -prune -o -name dist -prune -o -name node_modules -prune -o -name build -prune -o -type f -name "*\.js" -print0 | xargs -0 grep --color -n "$@"
 }
 
 function jgrep()
@@ -89,7 +89,7 @@ function cgrep()
 
 function resgrep()
 {
-	for dir in `find . -name .repo -prune -o -name build -prune -o -name .git -prune -o -name res -type d -print`; do find $dir -type f -name '*\.xml' -print0 | xargs -0 grep --color -n "$@"; done;
+	for dir in `find . -name .repo -prune -o -name node_modules -prune -o -name build -prune -o -name .git -prune -o -name res -type d -print`; do find $dir -type f -name '*\.xml' -print0 | xargs -0 grep --color -n "$@"; done;
 }
 
 function xmlgrep()

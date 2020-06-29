@@ -4,6 +4,7 @@
 [color]
 	ui = auto
 [core]
+	quotepath = false
 	editor = vim
 	whitespace = cr-at-eol
 [merge]
@@ -28,3 +29,9 @@
 	default = simple
 [credential]
 	helper = cache --timeout=36000
+[gui]
+    encoding = utf-8
+[i18n]
+    commitencoding = utf-8
+[svn]
+    pathnameencoding = utf-8
