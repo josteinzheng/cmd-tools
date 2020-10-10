@@ -2,9 +2,16 @@
 
 if test -z $1
 then
-	minutes=45
+	minutes=40
 else
 	minutes=$1
 fi
 dir=$(cd "$(dirname $0)";pwd)
-echo "env DISPLAY=:0 eog -f $dir/dark.png" | at now+$minutes minutes 
+if test -z `which eog`
+then
+	echo open mode
+	echo "open $dir/dark.png" | at now+$minutes minutes 
+else
+	echo eog mode
+	echo "env DISPLAY=:0 eog -f $dir/dark.png" | at now+$minutes minutes 
+fi

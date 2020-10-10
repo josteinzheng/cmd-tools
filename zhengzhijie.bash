@@ -5,7 +5,7 @@ export ANDROID_HOME=$ANDROID_STUDIO/sdk
 
 function ifind()
 {
-	find . -name .repo -prune -o -name .git -prune -o -name .svn -prune -o -name "*" -type f | grep -i --color -E "$@"
+	find . -name .idea -prune -o -name .repo -prune -o -name .git -prune -o -name .svn -prune -o -name "*" -type f | grep -i --color -E "$@"
 }
 
 WORKSPACE=~/workspace
