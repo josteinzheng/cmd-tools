@@ -8,8 +8,23 @@ function ifind()
 	find . -name .idea -prune -o -name .repo -prune -o -name .git -prune -o -name .svn -prune -o -name "*" -type f | grep -i --color -E "$@"
 }
 
+function vimifind()
+{
+	fileFind=`ifind $1`
+	size=`echo $fileFind|wc -w`
+	if [ $size -eq 1 ];then
+		vim $fileFind
+	else
+		select file in $(ifind $1);
+		do
+			vim $file
+			break
+		done
+	fi
+}
+
 WORKSPACE=~/workspace
-IHOME=~/workspace
+IHOME=~/workspace/grampus
 
 function icd()
 {
@@ -136,6 +151,7 @@ alias l='ls'
 alias la='ls -al'
 alias b='cd -'
 alias ll='ls -l'
+alias mvninstall='mvn clean install -DskipTests'
 alias gollum='gollum --live-preview --adapter rugged'
 
 export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_STUDIO/ndk:$PATH

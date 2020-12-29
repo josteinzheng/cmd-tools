@@ -1,6 +1,6 @@
 [user]
 	name = Jostein Zheng
-	email = josteinzheng@126.com
+	email = zhengzj@missfresh.cn
 [color]
 	ui = auto
 [core]
@@ -10,6 +10,7 @@
 [merge]
 	tool = vimdiff
 [alias]
+	fpush = push --force
 	unstage = reset HEAD --
 	discard = checkout --
 	drop = "!f(){ git unstage \"$@\" && git discard \"$@\"; }; f"
