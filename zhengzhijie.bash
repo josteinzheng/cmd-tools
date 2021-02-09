@@ -12,7 +12,9 @@ function vimifind()
 {
 	fileFind=`ifind $1`
 	size=`echo $fileFind|wc -w`
-	if [ $size -eq 1 ];then
+	if [$size -eq 0 ]; then
+		echo "nothing found"
+	elif [ $size -eq 1 ];then
 		vim $fileFind
 	else
 		select file in $(ifind $1);
@@ -26,6 +28,19 @@ function vimifind()
 WORKSPACE=~/workspace
 IHOME=~/workspace/grampus
 
+function mod()
+{
+	if [ $# -eq 1 ];then
+		let ans=$1%256
+		echo $ans
+	elif [ $# -eq 2 ];then
+		let ans=$2%$1
+		echo $ans
+	else
+		echo Usage: mod num1 num2, return num2%num1
+	fi
+}
+
 function icd()
 {
 	local target_prj_path;
@@ -33,7 +48,7 @@ function icd()
 		cd $IHOME
         return;
     fi;
-    target_prj_path=$WORKSPACE/$1;
+    target_prj_path=$IHONE/$1;
     cd $target_prj_path
 }
 
