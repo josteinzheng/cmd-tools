@@ -44,12 +44,11 @@ function mod()
 function icd()
 {
 	local target_prj_path;
-    if [ ! "$1" ]; then
+	if [ "$#" -gt 0 ]; then
+		cd $IHOME/$1
+	else
 		cd $IHOME
-        return;
-    fi;
-    target_prj_path=$IHONE/$1;
-    cd $target_prj_path
+	fi
 }
 
 function where()
@@ -153,6 +152,18 @@ function iroot()
         echo "couldn't find a .git in this repo"
     fi
 }
+
+function ts()
+{
+	if [ ${#1} -gt 10 ]
+	then
+		let seconds=$1/1000
+	else
+		let seconds=$1
+	fi
+  date -r $seconds "+%Y-%m-%d %H:%M:%S"
+}
+
 TOOLSDIR=~/workspace/tools/unix_env
 source $TOOLSDIR/adb-completion.bash
 source $TOOLSDIR/npm-completion.bash

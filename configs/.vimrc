@@ -182,3 +182,4 @@ let g:miniBufExplModSelTarget = 1
 "vim文件间复制粘贴完美方案
 set mouse=a
 set mouse=v
+
