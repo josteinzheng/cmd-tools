@@ -172,6 +172,7 @@ ln -fs $TOOLSDIR/configs/.gitconfig ~/.gitconfig
 ln -fs $TOOLSDIR/configs/.vimrc ~/.vimrc
 export PATH=$TOOLSDIR/bin:$PATH
 export PATH=/opt/go/bin:$PATH
+export JAVA_HOME=/usr/lib/jvm/default-java
 
 alias l='ls'
 alias la='ls -al'
