@@ -1,0 +1,20 @@
+#!/bin/bash
+set -e
+if test $# -lt 1; then
+	echo "缺少参数，e.g.: $(basename $0) username"
+	exit 1
+fi
+
+git checkout master
+git pull
+for branch in `git br --merged  | grep $1`
+do
+	echo "removing $branch from local repo"
+	git br -d $branch
+done
+for branch in `git br -r --merged | grep $1`
+do
+	base_branch=${branch##origin/}
+	echo "removing $base_branch from origin"
+	git rdel $base_branch
+done

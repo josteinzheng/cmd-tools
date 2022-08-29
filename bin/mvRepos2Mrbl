@@ -1,0 +1,14 @@
+#!/bin/bash
+
+cat $1 | while read line
+do
+	oldRepo=`echo $line| awk '{print $2}'`;
+	newRepo=`echo $line| awk '{print $3}'`;
+	appCode=`echo $line| awk '{print $1}'`;
+	echo create a mirror repo on $newRepo for $appCode
+	git clone --bare $oldRepo $appCode;
+	cd $appCode;
+	git push --no-verify --mirror $newRepo;
+	cd ..;
+	rm -rf $appCode;
+done

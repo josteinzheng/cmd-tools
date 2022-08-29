@@ -164,7 +164,7 @@ function ts()
   date -r $seconds "+%Y-%m-%d %H:%M:%S"
 }
 
-TOOLSDIR=$(cd $(dirname $0); pwd)
+TOOLSDIR=~/workspace/tools/unix_env
 source $TOOLSDIR/adb-completion.bash
 source $TOOLSDIR/npm-completion.bash
 source $TOOLSDIR/git-completion.bash
