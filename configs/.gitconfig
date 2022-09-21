@@ -36,3 +36,5 @@
     commitencoding = utf-8
 [svn]
     pathnameencoding = utf-8
+[http]
+	sslBackend = openssl

@@ -26,7 +26,7 @@ function vimifind()
 }
 
 WORKSPACE=~/workspace
-IHOME=~/workspace/grampus
+IHOME=~/workspace/mrstore
 
 function mod()
 {
@@ -168,17 +168,19 @@ TOOLSDIR=~/workspace/tools/unix_env
 source $TOOLSDIR/adb-completion.bash
 source $TOOLSDIR/npm-completion.bash
 source $TOOLSDIR/git-completion.bash
+source $TOOLSDIR/kubectl-completion.bash
 ln -fs $TOOLSDIR/configs/.gitconfig ~/.gitconfig
 ln -fs $TOOLSDIR/configs/.vimrc ~/.vimrc
 export PATH=$TOOLSDIR/bin:$PATH
 export PATH=/opt/go/bin:$PATH
-export JAVA_HOME=/usr/lib/jvm/default-java
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_261.jdk/Contents/Home/
 
 alias l='ls'
 alias la='ls -al'
 alias b='cd -'
 alias ll='ls -l'
 alias mvninstall='mvn clean install -DskipTests'
+alias mvnpackage='mvn clean package -DskipTests -U'
 alias gollum='gollum --live-preview --adapter rugged'
 
 export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_STUDIO/ndk:$PATH
@@ -196,3 +198,5 @@ fi
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
