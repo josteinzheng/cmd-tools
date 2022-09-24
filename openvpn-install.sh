@@ -9,6 +9,7 @@
 
 mkdir -p /data/openvpn
 
+#域名需要跟实际公网ip对应上
 portal_hostname=portal.josteinzheng.cn
 username=jostein
 
