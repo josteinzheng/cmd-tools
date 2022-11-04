@@ -179,8 +179,8 @@ alias l='ls'
 alias la='ls -al'
 alias b='cd -'
 alias ll='ls -l'
-alias mvninstall='mvn clean install -DskipTests'
-alias mvnpackage='mvn clean package -DskipTests -U'
+alias mvninstall='mvn clean install -Dmaven.test.skip=true'
+alias mvnpackage='mvn clean package -Dmaven.test.skip=true -U'
 alias gollum='gollum --live-preview --adapter rugged'
 
 export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_STUDIO/ndk:$PATH

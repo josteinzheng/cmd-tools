@@ -1,11 +1,12 @@
 #!/bin/bash
 
 #yum install -y docker
+yum install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
-#systemctl start docker
-#systemctl enable docker
+systemctl start docker
+systemctl enable docker
 
-#docker pull kylemanna/openvpn
+docker pull kylemanna/openvpn
 
 
 #域名需要跟实际公网ip对应上
