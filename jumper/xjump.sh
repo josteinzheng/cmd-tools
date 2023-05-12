@@ -3,7 +3,6 @@
 set TERMSERV $env(host)
 set TERMPORT $env(port)
 set TERMUSER $env(username)
-set TERMPWD $env(passwd)
 
 set timeout 3
 
@@ -11,7 +10,6 @@ set timeout 3
 spawn ssh $TERMUSER@$TERMSERV -p $TERMPORT
 expect {
 	"yes/no" {send "yes\r"; exp_continue; }	
-	"*password:*" {send "$TERMPWD\r" }
 	"Opt" {send -- "$env(searchStr)\r"}
 }
 

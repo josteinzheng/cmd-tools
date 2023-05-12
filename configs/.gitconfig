@@ -1,6 +1,6 @@
 [user]
 	name = Jostein Zheng
-	email = zhengzj@mrcvs.cn
+	email = zhengzhijie@inno-chem.com.cn
 [color]
 	ui = auto
 [core]
@@ -38,3 +38,7 @@
     pathnameencoding = utf-8
 [http]
 	sslBackend = openssl
+[safe]
+	directory = /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core
+	directory = /usr/local/Homebrew/Library/Taps/homebrew/homebrew-cask
+	directory = /usr/local/Homebrew

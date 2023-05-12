@@ -41,4 +41,4 @@ docker run -v $OVPN_DATA:/etc/openvpn --rm kylemanna/openvpn ovpn_getclient $use
 
 
 #FAQ
-# 1. 防火墙或安全组需要开放udp端口1194，如果访问不同可以尝试换个外网ip（有可能ip被ban了)
+# 1. 防火墙或安全组需要开放udp端口1194，如果访问不通可以尝试换个外网ip（有可能ip被ban了)

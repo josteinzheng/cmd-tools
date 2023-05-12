@@ -3,6 +3,39 @@
 export ANDROID_STUDIO=~/android-dev-tools
 export ANDROID_HOME=$ANDROID_STUDIO/sdk
 
+function imvn()
+{
+	cmd=install
+	if [ $# -gt 0 ];then
+		case $1 in
+			i|install)
+				cmd=install
+				;;
+			d|deploy)
+				cmd=deploy
+				;;
+			p|package)
+				cmd=package
+				;;
+			c|compile)
+				cmd=compile
+				;;
+			*)
+				cmd=$1
+				;;
+		esac
+		if [ $# -gt 1 ];then
+			mvn -U -am -pl $2 clean $cmd -DskipTests=true
+		fi	
+	fi
+	mvn -U clean $cmd -DskipTests=true
+}
+
+function looppull()
+{
+	for dir in `ls`;do if [ -d $dir/.git ];then cd $dir; git pull ; cd -;fi;done
+}
+
 function ifind()
 {
 	find . -name .idea -prune -o -name .repo -prune -o -name .git -prune -o -name .svn -prune -o -name "*" -type f | grep -i --color -E "$@"
@@ -26,7 +59,7 @@ function vimifind()
 }
 
 WORKSPACE=~/workspace
-IHOME=~/workspace/mrstore
+IHOME=~/workspace/inno-chem
 
 function mod()
 {
@@ -179,8 +212,6 @@ alias l='ls'
 alias la='ls -al'
 alias b='cd -'
 alias ll='ls -l'
-alias mvninstall='mvn clean install -Dmaven.test.skip=true'
-alias mvnpackage='mvn clean package -Dmaven.test.skip=true -U'
 alias gollum='gollum --live-preview --adapter rugged'
 
 export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_STUDIO/ndk:$PATH
@@ -199,4 +230,7 @@ fi
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.ustc.edu.cn/brew.git"
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.ustc.edu.cn/homebrew-core.git"
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles"
+export BASH_SILENCE_DEPRECATION_WARNING=1

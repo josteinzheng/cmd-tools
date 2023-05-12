@@ -1,4 +1,4 @@
 #!/bin/bash
 
 dir=$(cd "$(dirname $0)";pwd)
-../jumper/jump.py zhengzj-ops $*
+$dir/../jumper/jump.py zhengzj-ops $*
