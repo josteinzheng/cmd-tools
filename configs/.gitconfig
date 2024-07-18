@@ -42,3 +42,5 @@
 	directory = /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core
 	directory = /usr/local/Homebrew/Library/Taps/homebrew/homebrew-cask
 	directory = /usr/local/Homebrew
+[init]
+	defaultBranch = master

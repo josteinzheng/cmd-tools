@@ -33,7 +33,7 @@ function imvn()
 
 function looppull()
 {
-	for dir in `ls`;do if [ -d $dir/.git ];then cd $dir; git pull ; cd -;fi;done
+	for dir in `ls`;do if [ -d $dir/.git ];then cd $dir; pwd; git pull ; cd -;fi;done
 }
 
 function ifind()
@@ -78,7 +78,7 @@ function icd()
 {
 	local target_prj_path;
 	if [ "$#" -gt 0 ]; then
-		cd $IHOME/$1
+		cd $IHOME/$1*
 	else
 		cd $IHOME
 	fi

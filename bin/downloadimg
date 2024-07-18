@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cat logos | while read line
+do
+	brand=`echo $line | awk '{print $1}'`
+	link=`echo $line | awk '{print $2}'`
+	echo $link
+	echo $brand
+	wget -c $link -O $brand.png
+done
