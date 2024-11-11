@@ -1,0 +1,40 @@
+[common]
+bind_port = 7000
+vhost_http_port = 8080
+
+
+# 服务器监听地址
+bind_addr = 0.0.0.0
+
+# 服务器控制台监听端口
+dashboard_port = 5000
+
+# 控制台密码
+dashboard_pwd = 13810264321
+
+# 日志级别
+log_level = info
+
+# 日志文件位置
+log_file = ./frps.log
+
+# 客户端连接超时时间
+client_table_max_age = 120
+
+# 代理连接超时时间
+proxy_table_max_age = 60
+
+# 代理最大并发数
+max_pool_count = 10
+
+# 最大单个连接带宽（单位：KB/s）
+max_single_conn_bandwidth = 0
+
+# 最大总带宽（单位：KB/s）
+max_total_bandwidth = 0
+
+# 代理协议类型
+[http]
+type = http
+token = yourtoken
+

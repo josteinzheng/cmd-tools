@@ -1,0 +1,9 @@
+serverAddr = "8.130.87.252"
+serverPort = 7000
+
+[[proxies]]
+name = "test-socket"
+type = "tcp"
+localIP = "127.0.0.1"
+localPort = 18080
+remotePort = 8001
